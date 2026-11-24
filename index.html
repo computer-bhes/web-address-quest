@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#153547">
+<title>網址探險隊｜國小資訊小測驗</title>
+<style>
+:root{color-scheme:light;--ink:#153547;--muted:#46616b;--paper:#eef5f4;--white:#fff;--teal:#096961;--mint:#bceedd;--line:#cddfdd;--yellow:#ffd36c;--red:#833638;--icon-bg:#e3f5ee}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,"Microsoft JhengHei",sans-serif;line-height:1.55}button{font:inherit}button:focus-visible,[tabindex]:focus-visible{outline:3px solid #146fca;outline-offset:4px}[hidden]{display:none!important}
+header{background:var(--ink);color:white}.top{min-height:66px;max-width:1120px;margin:auto;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:1.2rem;letter-spacing:.05em}.brand-mark{display:grid;place-items:center;width:36px;height:36px;border-radius:11px;background:var(--mint);color:var(--ink);font-size:1.3rem}.top-note{font-size:.9rem;color:#d7ebe7}
+main{width:min(100% - 44px,1072px);margin:36px auto}h1,h2,h3,p{margin:0}h1{font-size:clamp(2.2rem,5vw,4.35rem);letter-spacing:.02em;line-height:1.13;font-weight:900}h2{font-size:clamp(1.55rem,3.4vw,2.12rem);line-height:1.35}h3{font-size:1.13rem}p{overflow-wrap:anywhere}.intro{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;padding:44px;border-radius:27px;background:var(--ink);color:#fff;box-shadow:0 7px 0 #0b2531}.intro p{color:#d7ebe7;font-size:1.09rem;margin:14px 0 24px;max-width:30ch}.btn{border:0;border-radius:12px;padding:11px 21px;min-height:48px;cursor:pointer;font-weight:820;background:var(--teal);color:white;box-shadow:0 3px 0 #064843}.btn:hover{filter:brightness(1.1)}.btn:active:not(:disabled){transform:translateY(2px);box-shadow:0 1px 0 #064843}.btn:disabled{background:#e2eae9;color:#51676c;box-shadow:none;cursor:default}.btn.start{background:var(--yellow);color:#29241c;box-shadow:0 4px 0 #bf8c2d;font-size:1.16rem;padding:12px 29px}.btn.secondary{background:white;color:var(--teal);border:1px solid var(--line);box-shadow:0 3px 0 var(--line)}
+.demo{background:#f7fffd;transform:rotate(-2deg);border:2px solid #99c9c5;border-radius:16px;color:var(--ink);box-shadow:0 9px 0 #0b2632;overflow:hidden}.demo-top{background:#bceedd;padding:11px 14px;display:flex;gap:6px}.demo-top b{width:9px;height:9px;border-radius:50%;background:#2a716b}.demo-main{padding:16px}.demo-url{background:#e4f1ef;border-radius:8px;padding:9px;text-align:center;font:700 clamp(.76rem,1.72vw,1.17rem)/1.5 ui-monospace,monospace;overflow-wrap:anywhere}.demo-url span:nth-child(2){color:#7c4065}.demo-url span:nth-child(3){color:#875a0a}.demo-url span:nth-child(4){color:#065950}.demo-head{display:flex;align-items:center;justify-content:space-between;background:#dbece9;border-radius:8px;margin:12px 0 9px;padding:8px 10px;font-weight:800}.demo-head i{width:26%;height:7px;border-radius:5px;background:#91bdb7}.demo-pages{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.demo-pages span{display:grid;place-items:center;text-align:center;background:#edf6f4;border:1px solid #d3e6e2;border-radius:7px;padding:7px 3px;font-size:.86rem;font-weight:650}
+.stations{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}.station,.panel{border:1px solid var(--line);background:white;border-radius:17px;box-shadow:0 4px 0 #d9e7e5}.station{padding:18px;display:flex;align-items:center;gap:13px}.tile{flex:none;display:grid;place-items:center;width:43px;height:43px;border-radius:12px;background:var(--icon-bg);color:#0b5d55;font-weight:880;font-family:ui-monospace,monospace;font-size:1.08rem}.station:nth-child(2) .tile{background:#fff0ca;color:#65460e}.station:nth-child(3) .tile{background:#eee8ff;color:#534483}.station p{color:var(--muted);font-size:.92rem;margin-top:2px}
+.quiz,.results{width:min(100%,800px);margin:auto}.meter{padding:0 3px 16px}.meter-label{display:flex;justify-content:space-between;gap:10px;font-weight:800;margin-bottom:8px}.track{height:10px;border-radius:99px;background:#d7e7e5;overflow:hidden}.fill{height:100%;background:var(--teal);width:0%;transition:width .22s ease}.panel{padding:clamp(17px,4vw,34px)}.type{display:inline-block;margin-bottom:9px;background:#e4f3ef;color:#145a51;padding:3px 10px;border-radius:7px;font-size:.89rem;font-weight:800}.prompt-example{margin-top:13px;background:#edf5f4;border:1px solid #dce9e7;color:#1f4754;border-radius:9px;padding:9px 12px;font-family:ui-monospace,monospace;font-size:1.09rem;overflow-wrap:anywhere}.options{margin-top:18px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.option{background:#f7fbfa;border:2px solid #d3e4e1;border-radius:11px;min-height:55px;cursor:pointer;padding:9px 12px;text-align:left;color:var(--ink);font-weight:730;display:flex;align-items:center;gap:9px;overflow-wrap:anywhere}.option:hover:not(:disabled),.piece:hover:not(:disabled){border-color:#47877f;background:#eef8f5}.option:disabled,.piece:disabled{cursor:default;opacity:1}.option[aria-pressed="true"],.piece[aria-pressed="true"]{border-color:var(--teal);background:#dff5ed}.letter{min-width:27px;height:27px;display:grid;place-items:center;border-radius:7px;background:#e5efee;color:#345760;font-size:.88rem}.pieces{display:flex;flex-wrap:wrap;gap:4px;align-items:center;border-radius:10px;background:#edf5f4;padding:12px;font-family:ui-monospace,monospace}.piece{font:inherit;font-weight:800;color:var(--ink);border:2px solid #cadfdb;border-radius:8px;background:white;padding:5px 8px;min-height:44px;cursor:pointer}.dot{font-weight:900}.matching{display:grid;gap:9px;margin-top:18px}.match-row{display:grid;grid-template-columns:minmax(80px,.7fr) minmax(120px,1.3fr);gap:12px;align-items:center;padding:8px 11px;border-radius:10px;background:#eef6f4;font-weight:820}.match-row code{font-size:1.09rem}.match-row select{width:100%;min-height:43px;border:2px solid #c5dcd8;background:#fff;color:var(--ink);border-radius:8px;padding:5px 34px 5px 9px;font:inherit;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#35635e 50%),linear-gradient(135deg,#35635e 50%,transparent 50%);background-position:calc(100% - 16px) 51%,calc(100% - 11px) 51%;background-size:5px 5px;background-repeat:no-repeat;opacity:1}.matching+.options{margin-top:0}
+.is-correct{background:#dbf3e7!important;border-color:#398466!important}.is-wrong{background:#ffeded!important;border-color:#ae5857!important}.feedback{border-radius:10px;margin-top:16px;padding:10px 13px;background:#e1f5e9;color:#165b41}.feedback.wrong{background:#fceceb;color:var(--red)}.feedback strong{display:block}.actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;margin-top:19px}.result-head{text-align:center;margin-bottom:17px;padding:clamp(16px,3vw,27px) 12px;border-radius:15px;background:var(--ink);color:#fff}
+.result-head h2{font-size:clamp(1.25rem,3vw,1.8rem);color:#fff}
+.score-label{display:block;margin-top:4px;font-size:clamp(1rem,2.4vw,1.4rem);font-weight:800;color:#d7ebe7}
+.score{display:block;font-size:clamp(4.5rem,12vw,8rem);line-height:1.08;letter-spacing:-.04em;font-weight:900;font-variant-numeric:tabular-nums;color:var(--yellow);white-space:nowrap}
+.result-stats{display:grid;gap:8px;margin:15px 0}.stat{background:#edf5f4;border-radius:9px;padding:8px 11px;display:flex;gap:10px;justify-content:space-between}.stat strong{white-space:nowrap}.result-note{color:var(--muted);font-size:.95rem}.review{margin-top:17px}.review details{border-bottom:1px solid var(--line);padding:9px 0}.review summary{cursor:pointer;font-weight:750}.review p{margin:6px 0;color:var(--muted)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+@media(max-width:730px){.intro{gap:20px;padding:27px}.station{display:block}.station .tile{margin-bottom:7px}}@media(max-width:530px){main{width:calc(100% - 24px);margin:20px auto}.top{padding-inline:12px}.top-note{font-size:.8rem}.intro{grid-template-columns:1fr;gap:22px;padding:22px}.demo{transform:none}.stations{grid-template-columns:1fr;gap:9px;margin-top:20px}.station{display:flex;padding:10px 13px}.station .tile{margin:0}.options{grid-template-columns:1fr;gap:7px}.option{min-height:48px}.piece{padding-inline:5px}.pieces{padding:8px;gap:3px}.actions .btn{flex:1}.panel{padding:16px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="brand"><span class="brand-mark" aria-hidden="true">◎</span>網址探險隊</div><span class="top-note">國小資訊課</span></div></header>
+<main>
+<section id="home" aria-labelledby="title">
+  <div class="intro"><div><h1 id="title" tabindex="-1">網址探險隊</h1><p>拆解網址、配對代號，再分辨網站和網頁。完成 3 關共 12 題，每題確認後就能看解析。</p><button class="btn start" id="start">開始闖關</button></div>
+    <div class="demo" aria-hidden="true"><div class="demo-top"><b></b><b></b><b></b></div><div class="demo-main"><div class="demo-url"><span>https://www.</span><span>eduweb.</span><span>com.</span><span>tw</span></div><div class="demo-head"><span>首頁</span><i></i></div><div class="demo-pages"><span>網站介紹</span><span>學習資源</span><span>最新消息</span></div></div></div>
+  </div>
+  <div class="stations"><div class="station"><span class="tile" aria-hidden="true">://</span><div><h3>網址拆解</h3><p>辨認網址各段的用途</p></div></div><div class="station"><span class="tile" aria-hidden="true">.tw</span><div><h3>代號配對</h3><p>辨認機構與地區代號</p></div></div><div class="station"><span class="tile" aria-hidden="true">▤</span><div><h3>網站與網頁</h3><p>分辨網站、首頁與網頁</p></div></div></div>
+</section>
+<section id="quiz" class="quiz" aria-label="作答區" hidden>
+  <div class="meter"><div class="meter-label"><span id="stage"></span><span id="progress-label"></span></div><div class="track" id="track" role="progressbar" aria-label="已作答題數"><div class="fill" id="fill"></div></div></div>
+  <div class="panel"><span class="type" id="type"></span><h2 id="question" tabindex="-1"></h2><p id="example" class="prompt-example" hidden></p><div id="answer-area"></div><div id="announcer" class="sr-only" role="status" aria-live="polite"></div><div id="feedback" class="feedback" hidden><strong id="feedback-title"></strong><p id="explanation"></p></div><div class="actions"><button class="btn" id="submit" disabled>確認答案</button><button class="btn" id="next" hidden>下一題</button></div></div>
+</section>
+<section id="results" class="results panel" aria-labelledby="result-title" hidden></section>
+</main>
+<script>
+'use strict';
+const stages = ['網址拆解', '代號配對', '網站與網頁'];
+const choices = (stage, prompt, options, answer, explanation, example = '') =>
+  ({stage, kind:'choice', prompt, options, answer, explanation, example});
+const segments = ['https', 'www', 'eduweb', 'com', 'tw'];
+const address = (prompt, answer, explanation) =>
+  ({stage:0, kind:'address', prompt, options:segments, answer, explanation});
+const match = (prompt, pairs, explanation) =>
+  ({stage:1, kind:'match', prompt, pairs, explanation});
+const bank = [
+  choices(0, '網址的用途最像下列哪一項？', ['房子的地址，用來找到位置', '房子的照片，用來看外觀', '房子的鑰匙，用來解鎖', '房子的門鈴，用來發出聲音'], '房子的地址，用來找到位置', '網址就像地址。瀏覽器可以用網址找到要開啟的網路資源。'),
+  address('請點選代表「通訊協定」的那一段。', 'https', 'https 是通訊協定。它會加密瀏覽器與網站之間傳輸的資料。'),
+  address('請點選這個例子中的「網站名稱」那一段。', 'eduweb', '在這個教材例子中，eduweb 是網站名稱，www 是主機名稱。'),
+  choices(0, '在這個網址範例中，www 代表什麼？', ['通訊協定', '主機名稱', '機構類別', '地區代號'], '主機名稱', '依教材的網址拆解方式，www 這一段是主機名稱。', 'https://www.eduweb.com.tw'),
+  match('把每個機構代號配到對應的類別。', [['edu','教育單位'],['gov','政府'],['com','公司']], 'edu 常用於教育單位，gov 用於政府，com 常用於商業或公司。'),
+  match('把每個地區代號配到對應的地區。', [['tw','臺灣'],['jp','日本'],['uk','英國']], 'tw 代表臺灣，jp 代表日本，uk 代表英國。'),
+  choices(1, '依照教材的代號表，這個網址裡的 gov 和 tw 分別代表什麼？', ['公司、日本', '教育單位、臺灣', '政府、臺灣', '政府、英國'], '政府、臺灣', 'gov 是政府的機構代號，tw 是臺灣的地區代號。', 'https://www.cwb.gov.tw'),
+  choices(1, '看到這個網址結尾的 uk，對應哪個地區？', ['德國', '法國', '日本', '英國'], '英國', 'uk 對應英國。也可以用教材中的 de＝德國、fr＝法國、jp＝日本來比較。', 'https://www.bbc.co.uk'),
+  choices(2, '「教育雲」包含教育百科、教育媒體影音等內容。整個「教育雲」最適合稱為什麼？', ['網址', '網站', '通訊協定', '地區代號'], '網站', '多個相關的網頁組成一個網站。在教材的例子裡，整個教育雲是網站。'),
+  choices(2, '在學校網站上點選「午餐菜單」，打開一頁內容。這一頁叫什麼？', ['網站', '網頁', '主機名稱', '機構代號'], '網頁', '「午餐菜單」是網站中的一個網頁。'),
+  choices(2, '從學校網站的主要入口進去，通常最先看到的網頁叫什麼？', ['網址列', '網址', '首頁', '機構類別'], '首頁', '首頁是網站的主要入口，也是這個網站的一個網頁。'),
+  choices(2, '把學校網站想成一本書，哪個比喻最接近網站和網頁的關係？', ['整本書像網站，每一頁像網頁', '整本書像網頁，每一頁像網站', '書的頁碼就是整個網站', '一本書只能有一頁'], '整本書像網站，每一頁像網頁', '網站像一本書，網站裡的每一個網頁就像書中的一頁。')
+];
+
+const byId = id => document.getElementById(id);
+const home = byId('home'), quiz = byId('quiz'), results = byId('results');
+const answerArea = byId('answer-area'), submit = byId('submit'), next = byId('next');
+const questionHeading = byId('question'), feedback = byId('feedback');
+let questions = [], records = [], originalMisses = [], index = 0;
+let selected = null, controls = [], checked = false, retry = false;
+
+function shuffle(source) {
+  const items = [...source];
+  for (let i = items.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [items[i], items[j]] = [items[j], items[i]];
+  }
+  return items;
+}
+
+function el(tag, value, className) {
+  const element = document.createElement(tag);
+  if (value) element.textContent = value;
+  if (className) element.className = className;
+  return element;
+}
+
+function screen(active) {
+  [home, quiz, results].forEach(section => { section.hidden = section !== active; });
+  window.scrollTo(0, 0);
+}
+
+function start(run, practice = false) {
+  questions = run;
+  if (!practice) originalMisses = [];
+  records = [];
+  index = 0;
+  retry = practice;
+  screen(quiz);
+  renderQuestion();
+}
+
+function updateProgress() {
+  const track = byId('track');
+  track.setAttribute('aria-valuemin', '0');
+  track.setAttribute('aria-valuemax', String(questions.length));
+  track.setAttribute('aria-valuenow', String(records.length));
+  byId('fill').style.width = (100 * records.length / questions.length) + '%';
+}
+
+function renderQuestion() {
+  const item = questions[index];
+  selected = null;
+  controls = [];
+  checked = false;
+  byId('stage').textContent = (retry ? '錯題練習 · ' : '第 ' + (item.stage + 1) + ' 關 · ') + stages[item.stage];
+  byId('progress-label').textContent = '第 ' + (index + 1) + '／' + questions.length + ' 題';
+  updateProgress();
+  byId('type').textContent = {choice:'單選題', address:'點選網址', match:'配對題'}[item.kind];
+  questionHeading.textContent = item.prompt;
+  const example = byId('example');
+  example.textContent = item.example || '';
+  example.hidden = !item.example;
+  feedback.hidden = true;
+  byId('announcer').textContent = '';
+  next.hidden = true;
+  submit.hidden = false;
+  submit.disabled = true;
+  answerArea.replaceChildren();
+  if (item.kind === 'match') renderMatch(item);
+  else renderOptions(item);
+  window.scrollTo(0, 0);
+  questionHeading.focus({preventScroll:true});
+}
+
+function renderOptions(item) {
+  const addressMode = item.kind === 'address';
+  const wrapper = el('div', '', addressMode ? 'options pieces' : 'options');
+  if (addressMode) wrapper.style.display = 'flex';
+  const options = addressMode ? item.options : shuffle(item.options);
+  options.forEach((option, position) => {
+    if (addressMode && position > 0) wrapper.append(el('span', position === 1 ? '://' : '.', 'dot'));
+    const button = el('button', '', addressMode ? 'piece' : 'option');
+    button.type = 'button';
+    button.value = option;
+    button.setAttribute('aria-pressed', 'false');
+    if (!addressMode) {
+      const letter = el('span', String.fromCharCode(65 + position), 'letter');
+      letter.setAttribute('aria-hidden', 'true');
+      button.append(letter, el('span', option));
+    } else button.textContent = option;
+    button.addEventListener('click', () => {
+      selected = option;
+      controls.forEach(control => control.setAttribute('aria-pressed', String(control === button)));
+      submit.disabled = false;
+    });
+    controls.push(button);
+    wrapper.append(button);
+  });
+  answerArea.append(wrapper);
+}
+
+function renderMatch(item) {
+  const wrapper = el('div', '', 'matching');
+  const labels = shuffle(item.pairs.map(pair => pair[1]));
+  shuffle(item.pairs).forEach(([code, correct]) => {
+    const row = el('label', '', 'match-row');
+    const select = el('select');
+    select.setAttribute('aria-label', code + ' 對應的名稱');
+    select.dataset.answer = correct;
+    select.add(new Option('請選擇', ''));
+    labels.forEach(label => select.add(new Option(label, label)));
+    select.addEventListener('change', () => {
+      submit.disabled = !controls.every(control => control.value);
+    });
+    controls.push(select);
+    row.append(el('code', code), select);
+    wrapper.append(row);
+  });
+  answerArea.append(wrapper);
+}
+
+function grade() {
+  if (checked || submit.disabled) return;
+  checked = true;
+  const item = questions[index];
+  const pairing = item.kind === 'match';
+  const correct = pairing ? controls.every(control => control.value === control.dataset.answer) : selected === item.answer;
+  const response = pairing
+    ? controls.map(control => control.parentElement.firstElementChild.textContent + '＝' + control.value).join('、')
+    : selected;
+  controls.forEach(control => {
+    control.disabled = true;
+    const expected = pairing ? control.dataset.answer : item.answer;
+    if (control.value === expected) control.classList.add('is-correct');
+    else if (pairing || control.value === selected) control.classList.add('is-wrong');
+  });
+  records.push({item, correct, response});
+  updateProgress();
+  const title = correct ? '答對了！' : pairing ? '這題有配對需要調整' : '這題答錯了';
+  byId('feedback-title').textContent = title;
+  byId('explanation').textContent = item.explanation;
+  feedback.classList.toggle('wrong', !correct);
+  feedback.hidden = false;
+  byId('announcer').textContent = title + ' ' + item.explanation;
+  submit.hidden = true;
+  next.textContent = index + 1 === questions.length ? '查看結果' : '下一題';
+  next.hidden = false;
+  next.focus({preventScroll:true});
+}
+
+function renderResults() {
+  const correctCount = records.filter(record => record.correct).length;
+  const misses = records.filter(record => !record.correct);
+  if (!retry) originalMisses = misses.map(record => record.item);
+  const heading = el('h2', retry ? '錯題練習完成' : '闖關完成');
+  heading.id = 'result-title';
+  heading.tabIndex = -1;
+  const head = el('div', '', 'result-head');
+  const scoreLabel = el('span', retry ? '本次練習答對題數' : '總答對題數', 'score-label');
+  const score = el('strong', correctCount + '／' + records.length, 'score');
+  score.setAttribute('aria-label', '答對 ' + correctCount + ' 題，共 ' + records.length + ' 題');
+  head.append(heading, scoreLabel, score);
+  const stats = el('div', '', 'result-stats');
+  stages.forEach((stage, stageIndex) => {
+    const stageRecords = records.filter(record => record.item.stage === stageIndex);
+    if (!stageRecords.length) return;
+    const row = el('div', '', 'stat');
+    row.append(el('span', stage), el('strong', stageRecords.filter(record => record.correct).length + '／' + stageRecords.length + ' 題'));
+    stats.append(row);
+  });
+  const note = el('p', retry ? '這裡顯示本次練習答對的題數。' : '每題計 1 題，配對題須全部配對正確才算答對。', 'result-note');
+  results.replaceChildren(head, stats, note);
+  if (misses.length) {
+    const review = el('div', '', 'review');
+    review.append(el('h3', '錯題回顧'));
+    misses.forEach(record => {
+      const detail = el('details');
+      const expected = record.item.kind === 'match'
+        ? record.item.pairs.map(pair => pair.join('＝')).join('、')
+        : record.item.answer;
+      detail.append(el('summary', record.item.prompt));
+      if (record.item.example) detail.append(el('p', record.item.example));
+      if (record.item.kind === 'address') detail.append(el('p', 'https://www.eduweb.com.tw'));
+      detail.append(el('p', '你的答案｜' + record.response), el('p', '正確答案｜' + expected), el('p', record.item.explanation));
+      review.append(detail);
+    });
+    results.append(review);
+  }
+  const actions = el('div', '', 'actions');
+  if (misses.length || (retry && originalMisses.length)) {
+    const retryButton = el('button', misses.length ? '重練這次錯題' : '再練原本的錯題', 'btn');
+    retryButton.addEventListener('click', () => start(misses.length ? misses.map(record => record.item) : originalMisses, true));
+    actions.append(retryButton);
+  }
+  const all = el('button', '重新闖關', 'btn secondary');
+  all.addEventListener('click', () => start(bank));
+  const back = el('button', '回到首頁', 'btn secondary');
+  back.addEventListener('click', () => {
+    screen(home);
+    byId('title').focus({preventScroll:true});
+  });
+  actions.append(all, back);
+  results.append(actions);
+  screen(results);
+  heading.focus({preventScroll:true});
+}
+
+byId('start').addEventListener('click', () => start(bank));
+submit.addEventListener('click', grade);
+next.addEventListener('click', () => {
+  if (!checked) return;
+  index += 1;
+  if (index === questions.length) renderResults();
+  else renderQuestion();
+});
+</script>
+</body>
+</html>
